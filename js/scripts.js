@@ -272,3 +272,13 @@
       return false;
     });
   });
+  var reviews = $('#review-section'),
+      reviewsTop = reviews.offset().top;
+      $(window).bind('scroll', function() {
+        var windowTop = $(this).scrollTop();
+        if (windowTop > reviewsTop) {
+          $('#contacts-map').html(`<script>ymaps.ready(function(){var e=new ymaps.Map("contacts-map",{center:[55.74751,37.620725],zoom:18},{searchControlProvider:"yandex#search"}),t=ymaps.templateLayoutFactory.createClass('<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'),o=new ymaps.Placemark([55.74751,37.620725],{hintContent:"Одинцовский район, д.п. Лесной городок, ул. Фасадная 2 стр. 2"},{iconLayout:"default#imageWithContent",iconImageHref:"img/contacts/metka.png",iconImageSize:[154,68],iconImageOffset:[0,-34],iconContentOffset:[15,15],iconContentLayout:t});e.behaviors.disable("scrollZoom"),e.geoObjects.add(o)});</script>`);
+          $(window).unbind('scroll');
+        }
+      });
+      
